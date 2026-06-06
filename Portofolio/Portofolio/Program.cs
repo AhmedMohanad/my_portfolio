@@ -15,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // service injection
 builder.Services.AddScoped<IImageServices, ImageServices>();
-builder.Services.AddScoped<IProfileServices, Profileservices>();
+builder.Services.AddScoped<IProfileServices, ProfileServices>();
 
 
 var app = builder.Build();

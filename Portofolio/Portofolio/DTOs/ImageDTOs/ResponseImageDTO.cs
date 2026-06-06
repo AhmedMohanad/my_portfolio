@@ -1,12 +1,12 @@
-﻿namespace Portofolio.DTOs.ImageDTOs
+﻿// DTOs/ImageDTOs/ResponseImageDTO.cs
+namespace Portofolio.DTOs.ImageDTOs
 {
-    public class ImageResponseDTO
+    public class ResponseImageDTO
     {
-
         public int Id { get; set; }
         public string Url { get; set; } = string.Empty;
         public DateTime UploadedAt { get; set; }
         public int ProfileId { get; set; }
-        public string? FullName { get; set; }
+        public string? ProfileFullName { get; set; }  
     }
 }

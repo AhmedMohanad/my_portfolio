@@ -1,31 +1,30 @@
-﻿using Portofolio.Data;
+﻿// Services/ProfileServices/ProfileServices.cs
+using Portofolio.Data;
 using Portofolio.DTOs.ImageDTOs;
 using Portofolio.DTOs.ProfileDTOs;
+using Portofolio.DTOs.ExperienceDTOs;
 using Portofolio.Models.UserModels;
 using Portofolio.Services.ImageServices;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Portofolio.Services.ProfileServices
 {
-    public class Profileservices : IProfileServices
+    public class ProfileServices : IProfileServices
     {
-
         private readonly ApplicationDbContext _context;
         private readonly IImageServices _imageServices;
 
-        public Profileservices(ApplicationDbContext portofolioDbContext, IImageServices imageServices)
+        public ProfileServices(ApplicationDbContext context, IImageServices imageServices)
         {
-            _context = portofolioDbContext;
+            _context = context;
             _imageServices = imageServices;
         }
 
-        // Create a new profile
         public async Task<ResponseProfileDTO> CreateProfileAsync(CreateProfileDTO createDto)
         {
             // Check if email already exists
             var existingProfile = await _context.Profiles
-                                .FirstOrDefaultAsync(p => p.Email == createDto.Email);
+                .FirstOrDefaultAsync(p => p.Email == createDto.Email);
 
             if (existingProfile != null)
                 throw new InvalidOperationException("Email already exists");
@@ -33,7 +32,6 @@ namespace Portofolio.Services.ProfileServices
             // Hash the password
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(createDto.Password);
 
-            // Create new profile
             var profile = new Profile
             {
                 FullName = createDto.FullName,
@@ -46,26 +44,8 @@ namespace Portofolio.Services.ProfileServices
             _context.Profiles.Add(profile);
             await _context.SaveChangesAsync();
 
-            // Upload profile picture if provided
-            string? photoUrl = null;
-            if (createDto.ProfilePicture != null && createDto.ProfilePicture.Length > 0)
-            {
-                try
-                {
-                    var uploadDto = new UploadImgDTO
-                    {
-                        File = createDto.ProfilePicture,
-                        ProfileId = profile.Id
-                    };
-                    var uploadedImage = await _imageServices.UploadImageAsync(uploadDto);
-                    photoUrl = uploadedImage.Url;
-                }
-                catch (Exception ex)
-                {
-                    // Log error but don't fail profile creation
-                    Console.WriteLine($"Failed to upload profile picture: {ex.Message}");
-                }
-            }
+            //  Profile picture is uploaded separately after creation via /api/images
+           
 
             return new ResponseProfileDTO
             {
@@ -74,27 +54,23 @@ namespace Portofolio.Services.ProfileServices
                 Email = profile.Email,
                 PhoneNumber = profile.PhoneNumber,
                 Bio = profile.Bio,
-                ProfilePictureUrl = photoUrl,
-                CreatedAt = DateTime.Now
+                ProfilePictureUrl = null,   // uploaded separately
+                Experiences = new()
             };
         }
 
-
-        // Get profile by ID with all related data
         public async Task<ResponseProfileDTO?> GetProfileByIdAsync(int id)
         {
             var profile = await _context.Profiles
                 .Include(p => p.Experiences)
-                .Include(p => p.ProfilePictureUrl)
+                .Include(p => p.ProfilePictures)    
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (profile == null)
                 return null;
 
-            // Get latest profile picture
-            var latestImage = profile.ProfilePictureUrl
-                .OrderByDescending(i => i.UploadedAt)
-                .FirstOrDefault();
+            //  use [NotMapped] computed property from the model
+            var latestImage = profile.ProfilePicture;
 
             return new ResponseProfileDTO
             {
@@ -104,21 +80,17 @@ namespace Portofolio.Services.ProfileServices
                 PhoneNumber = profile.PhoneNumber,
                 Bio = profile.Bio,
                 ProfilePictureUrl = latestImage?.Url,
-                Experiences = profile.Experiences.Select(e => new ExperienceDTO
+                Experiences = profile.Experiences.Select(e => new ResponseExperienceDTO
                 {
-                    Id = e.Id,
+                    Id = e.Id,                      
                     Company = e.Company,
                     Role = e.Role,
                     Description = e.Description,
                     StartDate = e.StartDate,
-                    EndDate = e.EndDate
-                }).ToList(),
-                CreatedAt = DateTime.Now
+                    EndDate = e.EndDate,
+                    ProfileName = profile.FullName  
+                }).ToList()
             };
         }
-
-
-
-
     }
 }

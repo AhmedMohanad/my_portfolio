@@ -1,15 +1,10 @@
-﻿// Models/UserModels/Experience.cs
+﻿// DTOs/ExperienceDTOs/CreateExperienceDTO.cs
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Portofolio.Models.UserModels
+namespace Portofolio.DTOs.ExperienceDTOs
 {
-    public class Experience
+    public class CreateExperienceDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
         [Required]
         [MaxLength(200)]
         public string Company { get; set; } = string.Empty;
@@ -21,12 +16,12 @@ namespace Portofolio.Models.UserModels
         [MaxLength(1000)]
         public string? Description { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
+
         public DateTime? EndDate { get; set; }  // null = present
 
-        // Foreign key
+        [Required]
         public int ProfileId { get; set; }
-        public Profile Profile { get; set; } = null!;
     }
 }
-

@@ -5,9 +5,9 @@ namespace Portofolio.Services.ImageServices
     public interface IImageServices
     {
 
-        Task<ImageResponseDTO> UploadImageAsync(UploadImgDTO createDto);
-        Task<ImageResponseDTO?> GetImageByIdAsync(int id);
-        Task<List<ImageResponseDTO>> GetUserImagesOrderedByDateAsync(int profileId);
+        Task<ResponseImageDTO> UploadImageAsync(UploadImgDTO createDto);
+        Task<ResponseImageDTO?> GetImageByIdAsync(int id);
+        Task<List<ResponseImageDTO>> GetUserImagesOrderedByDateAsync(int profileId);
         Task<bool> DeleteImageAsync(int id);
     }
 }

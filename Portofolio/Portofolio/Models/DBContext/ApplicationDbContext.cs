@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Portofolio.Models.ImageModel;
 using Portofolio.Models.UserModels;
-using System.Reflection.Emit;
 
 namespace Portofolio.Data
 {
@@ -55,7 +54,7 @@ namespace Portofolio.Data
                 entity.Property(i => i.UploadedAt).IsRequired();
 
                 entity.HasOne(i => i.Profile)
-                    .WithMany(p => p.ProfilePictureUrl)
+                    .WithMany(p => p.ProfilePictures)  
                     .HasForeignKey(i => i.ProfileId)
                     .OnDelete(DeleteBehavior.Cascade);
 
