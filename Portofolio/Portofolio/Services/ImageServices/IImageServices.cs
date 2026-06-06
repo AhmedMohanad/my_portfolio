@@ -7,7 +7,7 @@ namespace Portofolio.Services.ImageServices
 
         Task<ImageResponseDTO> UploadImageAsync(UploadImgDTO createDto);
         Task<ImageResponseDTO?> GetImageByIdAsync(int id);
-        Task<List<ImageResponseDTO>> GetAllImagesOrderedByDateAsync();
+        Task<List<ImageResponseDTO>> GetUserImagesOrderedByDateAsync();
         Task<bool> DeleteImageAsync(int id);
     }
 }

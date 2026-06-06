@@ -77,11 +77,12 @@ namespace Portofolio.Services.ImageServices
             };
         }
 
-        public async Task<List<ImageResponseDTO>> GetAllImagesOrderedByDateAsync()
+        public async Task<List<ImageResponseDTO>> GetUserImagesOrderedByDateAsync(int profileId)
         {
             var images = await _context.ImageDatas
                 .Include(i => i.Profile)
-                .OrderByDescending(i => i.UploadedAt)  // New to old
+                .Where(i => i.ProfileId == profileId)  // Filter by user ID
+                .OrderByDescending(i => i.UploadedAt)   // New to old
                 .Select(i => new ImageResponseDTO
                 {
                     Id = i.Id,
