@@ -1,6 +1,6 @@
 ﻿using Portofolio.Models.UserModels;
 
-namespace Portofolio.DTOs
+namespace Portofolio.DTOs.ProfileDTOs
 {
     public class CreateProfileDTO
     {

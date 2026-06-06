@@ -11,7 +11,7 @@ using Portofolio.Data;
 
 namespace Portofolio.Migrations
 {
-    [DbContext(typeof(PortoFoilioDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260606172733_InitialCreate")]
     partial class InitialCreate
     {

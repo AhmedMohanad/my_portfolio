@@ -6,9 +6,9 @@ using System.Reflection.Emit;
 
 namespace Portofolio.Data
 {
-    public class PortoFoilioDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public PortoFoilioDbContext(DbContextOptions<PortoFoilioDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }

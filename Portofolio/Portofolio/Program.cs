@@ -1,16 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Portofolio.Data;
+using Portofolio.Services.ImageServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 
 
-//
 builder.Services.AddControllers();
-builder.Services.AddDbContext<PortoFoilioDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IImageServices, ImageServices>();
 
 
 var app = builder.Build();

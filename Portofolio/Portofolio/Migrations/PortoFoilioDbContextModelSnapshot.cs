@@ -10,7 +10,7 @@ using Portofolio.Data;
 
 namespace Portofolio.Migrations
 {
-    [DbContext(typeof(PortoFoilioDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class PortoFoilioDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
