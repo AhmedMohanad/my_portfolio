@@ -1,20 +1,14 @@
-﻿using Portofolio.Models.UserModels;
-
-namespace Portofolio.DTOs.ProfileDTOs
+﻿namespace Portofolio.DTOs.ProfileDTOs
 {
-    public class CreateProfileDTO
+    public class ResponseProfileDTO
     {
 
-
+        public int Id { get; set; }
         public string FullName { get; set; } = string.Empty;
-
         public string Email { get; set; } = string.Empty;
-
-        public string Password { get; set; } = string.Empty;
-
         public string PhoneNumber { get; set; } = string.Empty;
-
         public string Bio { get; set; } = string.Empty;
-        public IFormFile? ProfilePicture { get; set; }
+        public string? ProfilePictureUrl { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

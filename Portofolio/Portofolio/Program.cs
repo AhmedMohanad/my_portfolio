@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Portofolio.Data;
 using Portofolio.Services.ImageServices;
+using Portofolio.Services.ProfileServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+// service injection
 builder.Services.AddScoped<IImageServices, ImageServices>();
+builder.Services.AddScoped<IProfileServices, Profileservices>();
 
 
 var app = builder.Build();
