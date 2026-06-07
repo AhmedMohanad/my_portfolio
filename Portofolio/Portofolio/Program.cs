@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Portofolio.Data;
+using Portofolio.LoggingServices;
+using Portofolio.MiddleWares;
 using Portofolio.Services.AuthServices;
 using Portofolio.Services.ExperienceServices;
 using Portofolio.Services.ImageServices;
@@ -27,6 +29,7 @@ builder.Services.AddScoped<IProfileServices, ProfileServices>();
 builder.Services.AddScoped<IExperienceServices, ExperienceServices>();
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IJwtServices, JwtServices>();
+builder.Services.AddSingleton<ISimpleLogger, SimpleLogger>();
 
 // JWT setup
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -68,6 +71,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+// Logger middeleware 
+app.UseMiddleware<RequestLoggerMiddleware>();
 
 // Catches any unhandled exception across the whole app and returns a clean JSON error
 // instead of crashing or leaking internal details

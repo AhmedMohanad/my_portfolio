@@ -1,0 +1,13 @@
+[INFO] 2026-06-07 09:17:03 - REQUEST: GET /
+[ERROR] 2026-06-07 09:17:03 - RESPONSE: GET / - Status: 404 - Duration: 196.5312ms
+[INFO] 2026-06-07 09:17:18 - REQUEST: POST /api/auth/logout
+[ERROR] 2026-06-07 09:17:21 - RESPONSE: POST /api/auth/logout - Status: 401 - Duration: 2866.2588ms
+[INFO] 2026-06-07 09:17:31 - REQUEST: POST /api/auth/logoin
+[ERROR] 2026-06-07 09:17:31 - RESPONSE: POST /api/auth/logoin - Status: 404 - Duration: 23.074ms
+[INFO] 2026-06-07 09:18:00 - REQUEST: POST /api/auth/logoin
+[ERROR] 2026-06-07 09:18:00 - RESPONSE: POST /api/auth/logoin - Status: 404 - Duration: 124.1904ms
+[INFO] 2026-06-07 09:18:10 - REQUEST: POST /api/auth/login
+[INFO] 2026-06-07 09:18:10 - Login request for: ahmed.mohanad9988@gmail.com
+[INFO] 2026-06-07 09:18:10 - Login attempt for: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-07 09:18:11 - User logged in successfully: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-07 09:18:11 - RESPONSE: POST /api/auth/login - Status: 200 - Duration: 707.3117ms
