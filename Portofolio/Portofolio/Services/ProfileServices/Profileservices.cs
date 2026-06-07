@@ -81,7 +81,7 @@ namespace Portofolio.Services.ProfileServices
                 Bio = profile.Bio,
                 ProfilePictureUrl = latestImage?.Url,
                 Experiences = profile.Experiences.Select(e => new ResponseExperienceDTO
-                {
+                {  // it hase to replace with methid from experience services but for now it is here
                     Id = e.Id,                      
                     Company = e.Company,
                     Role = e.Role,

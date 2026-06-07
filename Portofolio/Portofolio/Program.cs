@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Portofolio.Data;
+using Portofolio.Services.ExperienceServices;
 using Portofolio.Services.ImageServices;
 using Portofolio.Services.ProfileServices;
 
@@ -16,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // service injection
 builder.Services.AddScoped<IImageServices, ImageServices>();
 builder.Services.AddScoped<IProfileServices, ProfileServices>();
+builder.Services.AddScoped<IExperienceServices, ExperienceServices>();
 
 
 var app = builder.Build();
@@ -44,6 +47,31 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
+// Program.cs
+app.UseExceptionHandler(appError =>
+{
+    appError.Run(async context =>
+    {
+        var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+        var ex = contextFeature?.Error;
+
+        context.Response.ContentType = "application/json";
+
+        context.Response.StatusCode = ex switch
+        {
+            KeyNotFoundException => StatusCodes.Status404NotFound,
+            UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
+            _ => StatusCodes.Status500InternalServerError
+        };
+
+        await context.Response.WriteAsJsonAsync(new
+        {
+            statusCode = context.Response.StatusCode,
+            message = ex?.Message ?? "An unexpected error occurred."
+        });
+    });
+});
 
 
 app.Run();
