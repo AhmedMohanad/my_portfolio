@@ -15,6 +15,7 @@ namespace Portofolio.Data
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<ImageData> ImageDatas { get; set; }
+        public DbSet<BlacklistedToken> BlacklistedTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
