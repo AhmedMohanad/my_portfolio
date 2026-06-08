@@ -1,58 +1,63 @@
-﻿namespace Portofolio.LoggingServices
+﻿using Portofolio.LoggingServices;
+
+public class SimpleLogger : ISimpleLogger
 {
-    public class SimpleLogger : ISimpleLogger
+    private readonly string _logFilePath;
+    private static readonly object _lock = new(); // one lock for all threads
+
+    public SimpleLogger(IWebHostEnvironment env)
     {
-        private readonly IWebHostEnvironment _env;
-        private readonly string _logFilePath;
+        _logFilePath = Path.Combine(env.ContentRootPath, "logs.txt");
+    }
 
-        public SimpleLogger(IWebHostEnvironment env)
+    private void WriteToFile(string message)
+    {
+        lock (_lock) // only one thread writes at a time
         {
-            _env = env;
-            _logFilePath = Path.Combine(_env.ContentRootPath, "logs.txt");
-        }
-
-        public void LogInfo(string message)
-        {
-            var logMessage = $"[INFO] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
-            Console.WriteLine(logMessage);
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
-        }
-
-        public void LogError(string message)
-        {
-            var logMessage = $"[ERROR] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(logMessage);
-            Console.ResetColor();
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
-        }
-
-        public void LogError(Exception ex, string message)
-        {
-            var logMessage = $"[ERROR] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message} - Exception: {ex.Message} - StackTrace: {ex.StackTrace}";
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(logMessage);
-            Console.ResetColor();
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
-        }
-
-        public void LogWarning(string message)
-        {
-            var logMessage = $"[WARNING] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(logMessage);
-            Console.ResetColor();
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
-        }
-
-        public void LogSuccess(string message)
-        {
-            var logMessage = $"[SUCCESS] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(logMessage);
-            Console.ResetColor();
-            File.AppendAllText(_logFilePath, logMessage + Environment.NewLine);
+            File.AppendAllText(_logFilePath, message + Environment.NewLine);
         }
     }
-}
 
+    public void LogInfo(string message)
+    {
+        var log = $"[INFO] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+        Console.WriteLine(log);
+        WriteToFile(log);
+    }
+
+    public void LogError(string message)
+    {
+        var log = $"[ERROR] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(log);
+        Console.ResetColor();
+        WriteToFile(log);
+    }
+
+    public void LogError(Exception ex, string message)
+    {
+        var log = $"[ERROR] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message} | {ex.Message}";
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(log);
+        Console.ResetColor();
+        WriteToFile(log);
+    }
+
+    public void LogWarning(string message)
+    {
+        var log = $"[WARNING] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(log);
+        Console.ResetColor();
+        WriteToFile(log);
+    }
+
+    public void LogSuccess(string message)
+    {
+        var log = $"[SUCCESS] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(log);
+        Console.ResetColor();
+        WriteToFile(log);
+    }
+}

@@ -24,26 +24,17 @@ namespace Portofolio.Controllers.ProfileControllers
         [HttpPost]
         public async Task<IActionResult> CreateProfile(CreateProfileDTO dto)
         {
-            try
-            {
+            
                 _logger.LogInformation("Creating profile request for {Email}", dto.Email);
                 var result = await _profileServices.CreateProfileAsync(dto);
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while creating profile for {Email}", dto.Email);
-                return BadRequest(ex.Message);
-            }
-
-
+            
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfileById(int id)
         {
-            try
-            {
+            
                 _logger.LogInformation("Getting profile by ID: {ProfileId}", id);
                 var result = await _profileServices.GetProfileByIdAsync(id);
                 if (result == null)
@@ -52,12 +43,7 @@ namespace Portofolio.Controllers.ProfileControllers
                     return NotFound("Profile not found");
                 }
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while getting profile with ID: {ProfileId}", id);
-                return BadRequest(ex.Message);
-            }
+            
 
         }
 

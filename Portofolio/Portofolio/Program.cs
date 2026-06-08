@@ -31,6 +31,16 @@ builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IJwtServices, JwtServices>();
 builder.Services.AddSingleton<ISimpleLogger, SimpleLogger>();
 
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // This ignores cycles and prevents the error
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+
+        // Optional: Make JSON pretty
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+
 // JWT setup
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

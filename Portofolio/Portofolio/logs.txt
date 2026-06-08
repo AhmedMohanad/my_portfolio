@@ -55,3 +55,49 @@
 [SUCCESS] 2026-06-08 04:08:19 - RESPONSE: GET /api/profile/1 - Status: 200 - Duration: 505.9515ms
 [INFO] 2026-06-08 04:17:18 - REQUEST: POST /api/profile/
 [SUCCESS] 2026-06-08 04:17:19 - RESPONSE: POST /api/profile/ - Status: 200 - Duration: 932.6565ms
+[INFO] 2026-06-08 04:48:51 - REQUEST: GET /
+[ERROR] 2026-06-08 04:48:51 - RESPONSE: GET / - Status: 404 - Duration: 199.2989ms
+[INFO] 2026-06-08 04:49:47 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:49:51 - Attempting to upload profile image
+[WARNING] 2026-06-08 04:49:51 - Profile not found for image upload: 0
+[ERROR] 2026-06-08 04:49:51 - Error uploading profile image - Exception: Profile not found. - StackTrace:    at Portofolio.Services.ImageServices.ImageServices.UploadProfileImageAsync(UploadImgDTO dto) in D:\dotnet_projects\protofolio\Portofolio\Portofolio\Services\ImageServices\ImageServices.cs:line 31
+   at Portofolio.Controllers.ImageControllers.ImageController.UploadProfileImage(UploadImgDTO dto) in D:\dotnet_projects\protofolio\Portofolio\Portofolio\Controllers\ImageControllers\ImageController.cs:line 29
+[ERROR] 2026-06-08 04:49:51 - RESPONSE: POST /api/image/upload - Status: 400 - Duration: 3704.1897ms
+[INFO] 2026-06-08 04:50:52 - REQUEST: GET /
+[ERROR] 2026-06-08 04:50:52 - RESPONSE: GET / - Status: 404 - Duration: 96.3894ms
+[INFO] 2026-06-08 04:50:56 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:50:58 - Attempting to upload profile image
+[INFO] 2026-06-08 04:51:47 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:51:49 - REQUEST: GET /
+[ERROR] 2026-06-08 04:51:49 - RESPONSE: GET / - Status: 404 - Duration: 4.3869ms
+[INFO] 2026-06-08 04:51:51 - Attempting to upload profile image
+[INFO] 2026-06-08 04:52:00 - Image uploaded successfully for profile ID: 1
+[ERROR] 2026-06-08 04:52:00 - RESPONSE: POST /api/image/upload - Status: 500 - Duration: 12516.6594ms
+[INFO] 2026-06-08 04:52:24 - REQUEST: GET /
+[ERROR] 2026-06-08 04:52:24 - RESPONSE: GET / - Status: 404 - Duration: 112.3668ms
+[INFO] 2026-06-08 04:52:28 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:52:30 - Attempting to upload profile image
+[INFO] 2026-06-08 04:52:30 - Image uploaded successfully for profile ID: 1
+[ERROR] 2026-06-08 04:52:31 - RESPONSE: POST /api/image/upload - Status: 500 - Duration: 2727.4516ms
+[INFO] 2026-06-08 04:53:57 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:53:57 - Attempting to upload profile image
+[INFO] 2026-06-08 04:53:57 - Image uploaded successfully for profile ID: 1
+[ERROR] 2026-06-08 04:53:57 - RESPONSE: POST /api/image/upload - Status: 500 - Duration: 108.9885ms
+[INFO] 2026-06-08 04:54:09 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 04:59:54 - REQUEST: GET /
+[ERROR] 2026-06-08 04:59:54 - RESPONSE: GET / - Status: 404 - Duration: 132.1355ms
+[INFO] 2026-06-08 04:59:58 - REQUEST: POST /api/image/upload
+[ERROR] 2026-06-08 05:00:01 - RESPONSE: POST /api/image/upload - Status: 415 - Duration: 2335.8162ms
+[INFO] 2026-06-08 05:01:18 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 05:01:18 - Attempting to upload profile image
+[INFO] 2026-06-08 05:01:18 - Image uploaded successfully for profile ID: 1
+[SUCCESS] 2026-06-08 05:01:18 - RESPONSE: POST /api/image/upload - Status: 200 - Duration: 605.4238ms
+[INFO] 2026-06-08 05:03:53 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 05:03:53 - Attempting to upload profile image
+[ERROR] 2026-06-08 05:03:53 - File is null for profile ID: 1
+[INFO] 2026-06-08 05:04:42 - REQUEST: GET /
+[ERROR] 2026-06-08 05:04:42 - RESPONSE: GET / - Status: 404 - Duration: 97.7164ms
+[INFO] 2026-06-08 05:05:04 - REQUEST: POST /api/image/upload
+[INFO] 2026-06-08 05:05:06 - Attempting to upload profile image
+[INFO] 2026-06-08 05:05:07 - Image uploaded successfully for profile ID: 1
+[SUCCESS] 2026-06-08 05:05:07 - RESPONSE: POST /api/image/upload - Status: 200 - Duration: 2455.0293ms
