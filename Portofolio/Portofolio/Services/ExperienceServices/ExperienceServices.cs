@@ -46,9 +46,9 @@ namespace Portofolio.Services.ExperienceServices
 
         }
 
-        public async Task<ResponseExperienceDTO?> GetExperienceByProfileIdAsync(int id)
+        public async Task<List<ResponseExperienceDTO>> GetExperienceByProfileIdAsync(int id)
         {
-            var experience = await _context.Experiences
+            var experiences = await _context.Experiences
                 .Where(e => e.ProfileId == id)
                 .Select(e => new ResponseExperienceDTO
                 {
@@ -59,9 +59,9 @@ namespace Portofolio.Services.ExperienceServices
                     StartDate = e.StartDate,
                     EndDate = e.EndDate
                 })
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
-            return experience;
+            return experiences;
         }
 
         public async Task<ResponseExperienceDTO?> UpdateExperienceAsync(int id, UpdateExperienceDTO updateDto)

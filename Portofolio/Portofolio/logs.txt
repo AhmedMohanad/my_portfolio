@@ -101,3 +101,41 @@
 [INFO] 2026-06-08 05:05:06 - Attempting to upload profile image
 [INFO] 2026-06-08 05:05:07 - Image uploaded successfully for profile ID: 1
 [SUCCESS] 2026-06-08 05:05:07 - RESPONSE: POST /api/image/upload - Status: 200 - Duration: 2455.0293ms
+[INFO] 2026-06-08 07:22:10 - REQUEST: GET /
+[ERROR] 2026-06-08 07:22:11 - RESPONSE: GET / - Status: 404 - Duration: 197.1778ms
+[INFO] 2026-06-08 07:22:22 - REQUEST: GET /api/experience/1
+[ERROR] 2026-06-08 07:22:25 - RESPONSE: GET /api/experience/1 - Status: 404 - Duration: 2860.496ms
+[INFO] 2026-06-08 07:22:50 - REQUEST: GET /api/Experience/1
+[ERROR] 2026-06-08 07:22:51 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 60.0843ms
+[INFO] 2026-06-08 07:22:56 - REQUEST: GET /api/Experience/1
+[ERROR] 2026-06-08 07:22:56 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 88.5025ms
+[INFO] 2026-06-08 07:23:42 - REQUEST: GET /api/Experience/1
+[ERROR] 2026-06-08 07:23:42 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 7.218ms
+[INFO] 2026-06-08 07:23:52 - REQUEST: GET /api/Experience/1
+[ERROR] 2026-06-08 07:23:52 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 9.6824ms
+[INFO] 2026-06-08 07:24:02 - REQUEST: GET /
+[ERROR] 2026-06-08 07:24:03 - RESPONSE: GET / - Status: 404 - Duration: 126.5582ms
+[INFO] 2026-06-08 07:24:07 - REQUEST: GET /api/Experience/1
+[ERROR] 2026-06-08 07:24:10 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 2209.8409ms
+[INFO] 2026-06-08 07:24:59 - REQUEST: GET /api/Experience/1
+[INFO] 2026-06-08 07:25:00 - REQUEST: GET /
+[ERROR] 2026-06-08 07:25:00 - RESPONSE: GET / - Status: 404 - Duration: 2.9894ms
+[INFO] 2026-06-08 07:25:23 - REQUEST: GET /
+[ERROR] 2026-06-08 07:25:23 - RESPONSE: GET / - Status: 404 - Duration: 135.0351ms
+[INFO] 2026-06-08 07:25:26 - REQUEST: GET /api/Experience/1
+[INFO] 2026-06-08 07:25:28 - Experience with id 1 not found.
+[ERROR] 2026-06-08 07:25:28 - RESPONSE: GET /api/Experience/1 - Status: 404 - Duration: 2105.9291ms
+[INFO] 2026-06-08 07:27:42 - REQUEST: GET /
+[ERROR] 2026-06-08 07:27:43 - RESPONSE: GET / - Status: 404 - Duration: 104.36ms
+[INFO] 2026-06-08 07:27:54 - REQUEST: POST /api/Experience
+[INFO] 2026-06-08 07:27:57 - Experience for profile id 1 created successfully.
+[SUCCESS] 2026-06-08 07:27:57 - RESPONSE: POST /api/Experience - Status: 201 - Duration: 3427.0206ms
+[INFO] 2026-06-08 07:28:07 - REQUEST: GET /api/Experience/1
+[INFO] 2026-06-08 07:28:07 - Experience with id 1 retrieved successfully.
+[SUCCESS] 2026-06-08 07:28:07 - RESPONSE: GET /api/Experience/1 - Status: 200 - Duration: 102.8858ms
+[INFO] 2026-06-08 07:29:19 - REQUEST: POST /api/Experience
+[INFO] 2026-06-08 07:29:19 - Experience for profile id 1 created successfully.
+[SUCCESS] 2026-06-08 07:29:19 - RESPONSE: POST /api/Experience - Status: 201 - Duration: 98.9955ms
+[INFO] 2026-06-08 07:29:28 - REQUEST: GET /api/Experience/1
+[INFO] 2026-06-08 07:29:29 - Experience with id 1 retrieved successfully.
+[SUCCESS] 2026-06-08 07:29:29 - RESPONSE: GET /api/Experience/1 - Status: 200 - Duration: 16.6833ms
