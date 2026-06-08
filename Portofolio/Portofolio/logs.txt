@@ -11,3 +11,47 @@
 [INFO] 2026-06-07 09:18:10 - Login attempt for: ahmed.mohanad9988@gmail.com
 [SUCCESS] 2026-06-07 09:18:11 - User logged in successfully: ahmed.mohanad9988@gmail.com
 [SUCCESS] 2026-06-07 09:18:11 - RESPONSE: POST /api/auth/login - Status: 200 - Duration: 707.3117ms
+[INFO] 2026-06-08 04:02:08 - REQUEST: GET /
+[ERROR] 2026-06-08 04:02:11 - RESPONSE: GET / - Status: 404 - Duration: 2991.4464ms
+[INFO] 2026-06-08 04:03:24 - REQUEST: POST /api/auth/login
+[INFO] 2026-06-08 04:03:29 - Login request for: ahmed.mohanad9988@gmail.com
+[INFO] 2026-06-08 04:03:29 - Login attempt for: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-08 04:03:30 - User logged in successfully: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-08 04:03:30 - RESPONSE: POST /api/auth/login - Status: 200 - Duration: 5678.6742ms
+[INFO] 2026-06-08 04:04:11 - REQUEST: GET /api/profile
+[ERROR] 2026-06-08 04:04:11 - RESPONSE: GET /api/profile - Status: 405 - Duration: 51.6514ms
+[INFO] 2026-06-08 04:05:13 - REQUEST: GET /api/profile/1
+[ERROR] 2026-06-08 04:05:13 - RESPONSE: GET /api/profile/1 - Status: 401 - Duration: 137.5442ms
+[INFO] 2026-06-08 04:05:31 - REQUEST: GET /api//login
+[ERROR] 2026-06-08 04:05:31 - RESPONSE: GET /api//login - Status: 404 - Duration: 9.8241ms
+[INFO] 2026-06-08 04:05:38 - REQUEST: GET /api//login
+[ERROR] 2026-06-08 04:05:38 - RESPONSE: GET /api//login - Status: 404 - Duration: 9.1347ms
+[INFO] 2026-06-08 04:05:48 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:05:48 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 8.2912ms
+[INFO] 2026-06-08 04:06:03 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:06:03 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 8.1224ms
+[INFO] 2026-06-08 04:06:12 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:06:12 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 6.4903ms
+[INFO] 2026-06-08 04:06:23 - REQUEST: GET /
+[ERROR] 2026-06-08 04:06:23 - RESPONSE: GET / - Status: 404 - Duration: 100.1833ms
+[INFO] 2026-06-08 04:06:23 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:06:25 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 2057.077ms
+[INFO] 2026-06-08 04:06:28 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:06:28 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 38.4338ms
+[INFO] 2026-06-08 04:06:57 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:06:57 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 93.2399ms
+[INFO] 2026-06-08 04:07:23 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:07:23 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 7.9874ms
+[INFO] 2026-06-08 04:07:34 - REQUEST: GET /
+[ERROR] 2026-06-08 04:07:34 - RESPONSE: GET / - Status: 404 - Duration: 83.0171ms
+[INFO] 2026-06-08 04:07:38 - REQUEST: GET /api/auth/login
+[ERROR] 2026-06-08 04:07:40 - RESPONSE: GET /api/auth/login - Status: 405 - Duration: 1759.9144ms
+[INFO] 2026-06-08 04:07:54 - REQUEST: POST /api/auth/login
+[INFO] 2026-06-08 04:07:54 - Login request for: ahmed.mohanad9988@gmail.com
+[INFO] 2026-06-08 04:07:54 - Login attempt for: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-08 04:07:55 - User logged in successfully: ahmed.mohanad9988@gmail.com
+[SUCCESS] 2026-06-08 04:07:55 - RESPONSE: POST /api/auth/login - Status: 200 - Duration: 607.7316ms
+[INFO] 2026-06-08 04:08:19 - REQUEST: GET /api/profile/1
+[SUCCESS] 2026-06-08 04:08:19 - RESPONSE: GET /api/profile/1 - Status: 200 - Duration: 505.9515ms
+[INFO] 2026-06-08 04:17:18 - REQUEST: POST /api/profile/
+[SUCCESS] 2026-06-08 04:17:19 - RESPONSE: POST /api/profile/ - Status: 200 - Duration: 932.6565ms

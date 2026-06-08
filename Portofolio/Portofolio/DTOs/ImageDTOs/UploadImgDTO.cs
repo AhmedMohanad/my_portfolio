@@ -5,6 +5,8 @@ namespace Portofolio.DTOs.ImageDTOs
 {
     public class UploadImgDTO
     {
+
+
         [Required]
         public int ProfileId { get; set; }
 

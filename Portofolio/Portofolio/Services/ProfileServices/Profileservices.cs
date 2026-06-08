@@ -13,21 +13,37 @@ namespace Portofolio.Services.ProfileServices
     {
         private readonly ApplicationDbContext _context;
         private readonly IImageServices _imageServices;
+        private readonly ILogger<ProfileServices> _logger;
 
-        public ProfileServices(ApplicationDbContext context, IImageServices imageServices)
+        public ProfileServices(ApplicationDbContext context, IImageServices imageServices, ILogger<ProfileServices> logger)
         {
             _context = context;
             _imageServices = imageServices;
+            _logger = logger;
         }
+
+       
 
         public async Task<ResponseProfileDTO> CreateProfileAsync(CreateProfileDTO createDto)
         {
+            if (string.IsNullOrWhiteSpace(createDto.FullName) ||
+                string.IsNullOrWhiteSpace(createDto.Email) ||
+                string.IsNullOrWhiteSpace(createDto.Password))
+            {
+                _logger.LogWarning("Attempt to create profile with missing required fields: {FullName}, {Email}", createDto.FullName, createDto.Email);
+                throw new ArgumentException("FullName, Email, and Password are required");
+            }
             // Check if email already exists
             var existingProfile = await _context.Profiles
                 .FirstOrDefaultAsync(p => p.Email == createDto.Email);
 
             if (existingProfile != null)
+            {
+                _logger.LogWarning("Attempt to create profile with existing email: {Email}", createDto.Email);
                 throw new InvalidOperationException("Email already exists");
+
+            }
+               
 
             // Hash the password
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(createDto.Password);
@@ -43,9 +59,10 @@ namespace Portofolio.Services.ProfileServices
 
             _context.Profiles.Add(profile);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Profile created with ID: {ProfileId} and Email: {Email}", profile.Id, profile.Email);
 
             //  Profile picture is uploaded separately after creation via /api/images
-           
+
 
             return new ResponseProfileDTO
             {

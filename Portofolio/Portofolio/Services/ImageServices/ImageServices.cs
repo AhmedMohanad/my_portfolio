@@ -143,5 +143,51 @@ namespace Portofolio.Services.ImageServices
 
             return $"/{_uploadsFolder}/{fileName}";
         }
+
+        public async Task<ImageData> UploadProfileImageAsync(UploadImgDTO dto)
+        {
+            // Make sure the profile exists first
+            var profile = await _context.Profiles.FindAsync(dto.ProfileId);
+            if (profile == null)
+                throw new KeyNotFoundException("Profile not found.");
+
+            string imageUrl;
+
+            if (dto.File != null)
+            {
+                // Save the file to wwwroot/images/
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                Directory.CreateDirectory(uploadsFolder); // creates folder if it doesn't exist
+
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(dto.File.FileName)}";
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await dto.File.CopyToAsync(stream);
+
+                imageUrl = $"/images/{fileName}";
+            }
+            else if (!string.IsNullOrEmpty(dto.ImageUrl))
+            {
+                // Just store the external URL directly (GitHub avatar, etc.)
+                imageUrl = dto.ImageUrl;
+            }
+            else
+            {
+                throw new InvalidOperationException("Either a file or an image URL must be provided.");
+            }
+
+            var image = new ImageData
+            {
+                Url = imageUrl,
+                ProfileId = dto.ProfileId,
+                UploadedAt = DateTime.UtcNow
+            };
+
+            _context.ImageDatas.Add(image);
+            await _context.SaveChangesAsync();
+
+            return image;
+        }
     }
 }

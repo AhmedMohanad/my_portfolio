@@ -1,4 +1,5 @@
 ﻿using Portofolio.DTOs.ImageDTOs;
+using Portofolio.Models.ImageModel;
 
 namespace Portofolio.Services.ImageServices
 {
@@ -9,5 +10,7 @@ namespace Portofolio.Services.ImageServices
         Task<ResponseImageDTO?> GetImageByIdAsync(int id);
         Task<List<ResponseImageDTO>> GetUserImagesOrderedByDateAsync(int profileId);
         Task<bool> DeleteImageAsync(int id);
+
+        Task<ImageData> UploadProfileImageAsync(UploadImgDTO dto);
     }
 }
