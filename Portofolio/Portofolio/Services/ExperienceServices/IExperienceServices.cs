@@ -9,7 +9,7 @@ namespace Portofolio.Services.ExperienceServices
 
         Task<bool> DeleteExperienceAsync(int id);
 
-        Task<ResponseExperienceDTO?> GetExperienceByProfileIdAsync(int id);
+        Task<List<ResponseExperienceDTO>> GetExperienceByProfileIdAsync(int id);
 
         Task<ResponseExperienceDTO?> UpdateExperienceAsync(int id, UpdateExperienceDTO updateDto);
     }
