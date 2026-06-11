@@ -6,6 +6,8 @@ using Portofolio.DTOs.ExperienceDTOs;
 using Portofolio.Models.UserModels;
 using Portofolio.Services.ImageServices;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Hybrid;
+using Portofolio.Common.Constants;
 
 namespace Portofolio.Services.ProfileServices
 {
@@ -14,12 +16,14 @@ namespace Portofolio.Services.ProfileServices
         private readonly ApplicationDbContext _context;
         private readonly IImageServices _imageServices;
         private readonly ILogger<ProfileServices> _logger;
+        private readonly HybridCache _cache;
 
-        public ProfileServices(ApplicationDbContext context, IImageServices imageServices, ILogger<ProfileServices> logger)
+        public ProfileServices(ApplicationDbContext context, IImageServices imageServices, ILogger<ProfileServices> logger, HybridCache cache)
         {
             _context = context;
             _imageServices = imageServices;
             _logger = logger;
+            _cache = cache;
         }
 
        
@@ -76,11 +80,26 @@ namespace Portofolio.Services.ProfileServices
             };
         }
 
-        public async Task<ResponseProfileDTO?> GetProfileByIdAsync(int id)
+
+
+        public async Task<ResponseProfileDTO?> GetProfileByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+
+            return await _cache.GetOrCreateAsync( 
+                CacheKeys.ProfileKey,
+                async cancel => await LoadProfileFromDataBase(id),
+                cancellationToken: cancellationToken);
+
+        }
+
+
+      
+
+        private async Task<ResponseProfileDTO?> LoadProfileFromDataBase(int id)
         {
             var profile = await _context.Profiles
                 .Include(p => p.Experiences)
-                .Include(p => p.ProfilePictures)    
+                .Include(p => p.ProfilePictures)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (profile == null)

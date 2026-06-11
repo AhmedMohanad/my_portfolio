@@ -139,3 +139,39 @@
 [INFO] 2026-06-08 07:29:28 - REQUEST: GET /api/Experience/1
 [INFO] 2026-06-08 07:29:29 - Experience with id 1 retrieved successfully.
 [SUCCESS] 2026-06-08 07:29:29 - RESPONSE: GET /api/Experience/1 - Status: 200 - Duration: 16.6833ms
+[INFO] 2026-06-11 11:26:17 - REQUEST: GET /
+[INFO] 2026-06-11 11:26:19 - REQUEST: GET /api/Profile/1
+[ERROR] 2026-06-11 11:26:21 - RESPONSE: GET / - Status: 404 - Duration: 3940.8761ms
+[SUCCESS] 2026-06-11 11:26:29 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 9269.2462ms
+[INFO] 2026-06-11 11:26:42 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:26:42 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 35.5916ms
+[INFO] 2026-06-11 11:26:52 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:26:53 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 100.2147ms
+[INFO] 2026-06-11 11:26:57 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:26:57 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 14.824ms
+[INFO] 2026-06-11 11:27:02 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:27:02 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 15.3901ms
+[INFO] 2026-06-11 11:30:53 - REQUEST: GET /
+[ERROR] 2026-06-11 11:30:53 - RESPONSE: GET / - Status: 404 - Duration: 204.7271ms
+[INFO] 2026-06-11 11:31:00 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:02 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 2686.8598ms
+[INFO] 2026-06-11 11:31:09 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:09 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 31.2229ms
+[INFO] 2026-06-11 11:31:14 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:14 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 101.8876ms
+[INFO] 2026-06-11 11:31:18 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:18 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 13.3854ms
+[INFO] 2026-06-11 11:31:23 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:23 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 16.2092ms
+[INFO] 2026-06-11 11:31:26 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:26 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 14.4342ms
+[INFO] 2026-06-11 11:31:29 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:29 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 14.0799ms
+[INFO] 2026-06-11 11:31:33 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:33 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 12.6797ms
+[INFO] 2026-06-11 11:31:36 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:31:36 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 13.2341ms
+[INFO] 2026-06-11 11:34:23 - REQUEST: GET /
+[ERROR] 2026-06-11 11:34:23 - RESPONSE: GET / - Status: 404 - Duration: 93.3603ms
+[INFO] 2026-06-11 11:34:27 - REQUEST: GET /api/Profile/1
+[SUCCESS] 2026-06-11 11:34:29 - RESPONSE: GET /api/Profile/1 - Status: 200 - Duration: 2217.647ms

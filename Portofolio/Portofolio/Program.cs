@@ -31,6 +31,9 @@ builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IJwtServices, JwtServices>();
 builder.Services.AddSingleton<ISimpleLogger, SimpleLogger>();
 
+// cache services 
+builder.Services.AddHybridCache();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

@@ -34,14 +34,19 @@ namespace Portofolio.Controllers.ProfileControllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfileById(int id)
         {
+
+
             
                 _logger.LogInformation("Getting profile by ID: {ProfileId}", id);
                 var result = await _profileServices.GetProfileByIdAsync(id);
+             
                 if (result == null)
                 {
                     _logger.LogWarning("Profile not found with ID: {ProfileId}", id);
                     return NotFound("Profile not found");
                 }
+
+
                 return Ok(result);
             
 
